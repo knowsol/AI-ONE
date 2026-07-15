@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>국회질의분류 AI</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/classification.css?v=20260714-2" />
+  </head>
+
+  <body>
+    <div class="app">
+      <aside class="rail" aria-label="주요 메뉴">
+        <div class="logo" title="AI-ONE">
+          <svg viewBox="0 0 42 42" aria-hidden="true">
+            <path
+              d="M27.3 5.9c-6.7-1-12.1 2.2-12.4 7.5-.2 3.9 2.8 6 7.6 7.8 4.4 1.7 6.5 3 6.2 6-.3 3.3-3.5 5.4-8.2 4.7-4-.6-7.3-3-9.8-6.4"
+              fill="none" stroke="#057bb7" stroke-width="3.3" stroke-linecap="round" />
+            <path
+              d="M14.8 36.1c6.7 1 12.1-2.2 12.4-7.5.2-3.9-2.8-6-7.6-7.8-4.4-1.7-6.5-3-6.2-6 .3-3.3 3.5-5.4 8.2-4.7 4 .6 7.3 3 9.8 6.4"
+              fill="none" stroke="#46b4de" stroke-width="3.3" stroke-linecap="round" />
+          </svg>
+        </div>
+        <nav class="rail-nav">
+          <button class="nav-btn" title="홈">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 11.5 12 4l9 7.5" />
+              <path d="M5.5 10.5V20h13v-9.5" />
+              <path d="M9.5 20v-6h5v6" />
+            </svg>
+          </button>
+          <a class="nav-btn active" href="./classification.html" title="국회질의분류 AI" aria-current="page">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 3h7l4 4v14H7z" />
+              <path d="M14 3v5h5" />
+              <path d="M12 11v6" />
+              <path d="M9 14h6" />
+            </svg>
+          </a>
+          <a class="nav-btn" href="./draft.html" title="답변서 초안 생성">
+            <svg viewBox="0 0 24 24">
+              <path d="m4 20 4.7-1.2L19.2 8.3a2.2 2.2 0 0 0-3.1-3.1L5.6 15.7z" />
+              <path d="m14.6 6.7 2.7 2.7" />
+            </svg>
+          </a>
+          <button class="nav-btn" title="분석 현황">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 19V5" />
+              <path d="M4 19h17" />
+              <path d="m7 15 3-5 4 4 3-7 3 5" />
+            </svg>
+          </button>
+          <button class="nav-btn" title="채팅">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M5 6.5A3.5 3.5 0 0 1 8.5 3h7A3.5 3.5 0 0 1 19 6.5v5A3.5 3.5 0 0 1 15.5 15H10l-5 4v-4.7A3.5 3.5 0 0 1 3 11V6.5z" />
+            </svg>
+          </button>
+        </nav>
+        <div class="rail-bottom">
+          <button class="round-btn" title="사용자">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 12a3.7 3.7 0 1 0 0-7.4A3.7 3.7 0 0 0 12 12z" />
+              <path d="M5 20a7 7 0 0 1 14 0" />
+            </svg>
+          </button>
+          <button class="round-btn" title="설정">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z" />
+              <path
+                d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .9V20.4a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-.9 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.9-1H3.6a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 .9-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06A2 2 0 0 1 7.03 4.2l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.9v-.1a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 .9 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.12.38.43.72.9 1h.1a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-.9 1z" />
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="title-wrap">
+            <div class="title-row">
+              <div class="title">국회질의분류 AI 워크스페이스</div>
+              <span class="beta-badge">🚀 BETA OPEN</span>
+            </div>
+          </div>
+          <div class="beta-notice">AI 추천 결과는 참고용입니다. 최종 실국은 담당자가 검토 후 확정하시기 바랍니다.</div>
+          <div class="subtitle">문서 업로드 · OCR/파싱 · 질의 분류 · AI 추천실국 확인</div>
+        </header>
+
+        <!-- 국회질의분류 AI 워크스페이스 -->
+        <div class="page workspace">
+          <section class="panel" aria-labelledby="uploadPanelTitle">
+            <div class="panel-head">
+              <h2 class="panel-title" id="uploadPanelTitle">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 16V4" />
+                  <path d="m7 9 5-5 5 5" />
+                  <path d="M5 15v4h14v-4" />
+                </svg>
+                문서 업로드
+              </h2>
+            </div>
+            <div class="left-body">
+              <label class="dropzone" id="dropzone" for="fileInput">
+                <div class="drop-plus">+</div>
+                <div class="drop-main">파일을 드래그하거나 선택하세요</div>
+                <div class="drop-sub">TXT는 OCR 없이 텍스트 파싱으로 처리됩니다.<br>PDF/이미지는 OCR/파싱 대상으로 표시됩니다.</div>
+              </label>
+              <input class="hidden-file" id="fileInput" type="file" multiple />
+              <div class="file-section">
+                <div class="section-row">
+                  <div class="section-title">입수 문서 목록</div>
+                  <div class="count-badge"><span id="fileCount">3</span>건</div>
+                </div>
+                <ul class="file-list" id="fileList" aria-label="입수 문서 목록">
+                  <li class="file-card" data-name="질의서_2024_0315.pdf">
+                    <span class="file-icon pdf" aria-hidden="true">PDF</span>
+                    <div class="file-info">
+                      <span class="file-name">질의서_2024_0315.pdf</span>
+                      <span class="file-size">2.4MB</span>
+                    </div>
+                    <button class="remove-file" type="button" title="삭제">×</button>
+                  </li>
+                  <li class="file-card" data-name="추가질의_세계관.hwp">
+                    <span class="file-icon hwp" aria-hidden="true">HWP</span>
+                    <div class="file-info">
+                      <span class="file-name">추가질의_세계관.hwp</span>
+                      <span class="file-size">1.1MB</span>
+                    </div>
+                    <button class="remove-file" type="button" title="삭제">×</button>
+                  </li>
+                  <li class="file-card" data-name="부서별_질의목록.xlsx">
+                    <span class="file-icon xls" aria-hidden="true">XLS</span>
+                    <div class="file-info">
+                      <span class="file-name">부서별_질의목록.xlsx</span>
+                      <span class="file-size">856KB</span>
+                    </div>
+                    <button class="remove-file" type="button" title="삭제">×</button>
+                  </li>
+                </ul>
+                <div class="empty-note" id="emptyNote">업로드된 문서가 없습니다.<br>파일을 추가하면 이 영역에 표시됩니다.</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="resultPanelTitle">
+            <div class="panel-head">
+              <h2 class="panel-title" id="resultPanelTitle">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 3h7l4 4v14H7z" />
+                  <path d="M14 3v5h5" />
+                </svg>
+                질의 추출결과
+              </h2>
+              <div class="center-head-tools">
+                <div class="total-chip">전체 <b>5</b></div>
+              </div>
+            </div>
+            <div class="tabbar">
+              <button class="tab" type="button">질의 추출 결과 보기</button>
+            </div>
+            <article class="doc-body" id="docBody">
+              <p class="doc-title">국회예산정책처 질의서</p>
+              <p class="question-line active" id="qline-1"><span class="q-num">1.</span>2024년도 예산편성지침 중 인건비
+                산정기준 변경사항에 대한 구체적 안내를 요청합니다. 특히 공무원 보수 인상률 적용 시점과 관련하여 세부 기준이 필요합니다.</p>
+              <p class="question-line" id="qline-2"><span class="q-num">2.</span>지방자치단체 재정자립도 산정 시 세외수입 항목의 포함
+                여부와 관련 법령 해석에 대해 질의합니다. 현행 지방재정법 제36조의2와 시행령 간 해석 차이가 있어 명확한 입장을 확인하고자 합니다.</p>
+              <p class="question-line" id="qline-3"><span class="q-num">3.</span>공공기관 경영평가 시 비계량지표 평가방법론 개선에
+                관하여 귀 부처의 의견을 조회합니다. 최근 3년간 평가결과 분석자료도 함께 회신 부탁드립니다.</p>
+              <p class="question-line" id="qline-4"><span class="q-num">4.</span>외국환거래법 개정(2024.3.1. 시행)에 따른
+                해외직접투자 신고절차 변경사항에 대해 안내를 요청합니다. 개정 전후 비교표 및 신고서 양식 변경 내용을 포함해 주시기 바랍니다.</p>
+              <p class="question-line" id="qline-5"><span class="q-num">5.</span>최근 기상이변으로 인한 농작물 피해 현황에 대한
+                자료를 요청합니다. 본 건은 농림축산식품부 소관으로 판단됩니다. 관련 예산 편성 협조 차원에서 확인합니다.</p>
+              <p class="doc-end">끝.</p>
+            </article>
+          </section>
+
+          <section class="panel" aria-labelledby="recommendPanelTitle">
+            <div class="panel-head">
+              <h2 class="panel-title" id="recommendPanelTitle">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 6h13" />
+                  <path d="M8 12h13" />
+                  <path d="M8 18h13" />
+                  <path d="M3 6h.01" />
+                  <path d="M3 12h.01" />
+                  <path d="M3 18h.01" />
+                </svg>
+                질의 목록 · 추천실국
+              </h2>
+              <button class="download-btn" id="downloadBtn" type="button" title="분류 결과 다운로드">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3v12" />
+                  <path d="m7 10 5 5 5-5" />
+                  <path d="M5 21h14" />
+                </svg>
+              </button>
+            </div>
+            <ul class="right-body" id="qList" aria-label="질의 목록 및 추천실국">
+              <li class="q-list-item">
+                <button class="q-card active" type="button" data-q="1" aria-controls="qline-1" aria-pressed="true">
+                  <span class="q-pill">Q1</span>
+                  <span class="q-text">2024년도 예산편성지침 중 인건비 산정기준 변경사항에 대한 구체적 안내 요청</span>
+                  <span class="owner-chip">주관: 예산실</span>
+                  <span class="similarity">유사도:<b>94%</b></span>
+                </button>
+              </li>
+              <li class="q-list-item">
+                <button class="q-card" type="button" data-q="2" aria-controls="qline-2" aria-pressed="false">
+                  <span class="q-pill">Q2</span>
+                  <span class="q-text">지방자치단체 재정자립도 산정 시 세외수입 항목 포함 여부 및 관련 법령 해석</span>
+                  <span class="owner-chip">주관: 재정정책국</span>
+                  <span class="similarity">유사도:<b>82%</b></span>
+                </button>
+              </li>
+              <li class="q-list-item">
+                <button class="q-card" type="button" data-q="3" aria-controls="qline-3" aria-pressed="false">
+                  <span class="q-pill">Q3</span>
+                  <span class="q-text">공공기관 경영평가 시 비계량지표 평가방법론 개선 관련 의견 조회</span>
+                  <span class="owner-chip">주관: 공공정책국</span>
+                  <span class="similarity">유사도:<b>91%</b></span>
+                </button>
+              </li>
+              <li class="q-list-item">
+                <button class="q-card" type="button" data-q="4" aria-controls="qline-4" aria-pressed="false">
+                  <span class="q-pill">Q4</span>
+                  <span class="q-text">외국환거래법 개정에 따른 해외직접투자 신고절차 변경 안내 요청</span>
+                  <span class="owner-chip">주관: 국제금융국</span>
+                  <span class="similarity">유사도:<b>78%</b></span>
+                </button>
+              </li>
+              <li class="q-list-item">
+                <button class="q-card" type="button" data-q="5" aria-controls="qline-5" aria-pressed="false">
+                  <span class="q-pill">Q5</span>
+                  <span class="q-text">최근 기상이변으로 인한 농작물 피해 현황 자료 요청의 건</span>
+                  <span class="owner-chip">주관: 해당없음</span>
+                  <span class="similarity">유사도:<b>96%</b></span>
+                </button>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+      </main>
+    </div>
+
+    <script src="../js/common.js" defer></script>
+    <script src="../js/classification.js?v=20260714-2" defer></script>
+  </body>
+
+</html>
