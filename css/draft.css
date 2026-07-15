@@ -1,13 +1,15 @@
 @charset "utf-8";
 
-/* Draft page layout */
+/* Start: 답변서 초안 페이지 레이아웃 */
 .draft-workspace {
   grid-template-columns: minmax(780px, 1fr) 528px;
   padding: 8px;
   gap: 6px;
 }
 
-/* Draft workspace */
+/* //End: 답변서 초안 페이지 레이아웃 */
+
+/* Start: 답변서 초안 패널 */
 .draft-panel-head {
   justify-content: flex-start;
   min-height: 66px;
@@ -226,7 +228,9 @@
   text-align: center;
 }
 
-/* Chat panel */
+/* //End: 답변서 초안 패널 */
+
+/* Start: AI 채팅 패널 */
 .chat-panel .panel-head {
   min-height: 52px;
   height: 52px;
@@ -409,6 +413,9 @@
   stroke-linejoin: round;
 }
 
+/* //End: AI 채팅 패널 */
+
+/* Start: 화면 너비 대응 */
 @media (max-width: 1500px) {
   .draft-workspace {
     grid-template-columns: minmax(680px, 1fr) 430px;
@@ -418,3 +425,4 @@
     padding: 28px 34px;
   }
 }
+/* //End: 화면 너비 대응 */

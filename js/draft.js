@@ -3,6 +3,7 @@
 
   const { downloadText } = common;
 
+  /* Start: 답변서 보기 및 다운로드 */
   function initDraftTools() {
     const draftPaper = document.getElementById("draftPaper");
     const zoomPercent = document.getElementById("zoomPercent");
@@ -42,7 +43,9 @@
       .getElementById("draftDownloadBtn")
       .addEventListener("click", downloadDraft);
   }
+  /* //End: 답변서 보기 및 다운로드 */
 
+  /* Start: AI 채팅 */
   function initChat() {
     const chatBody = document.getElementById("chatBody");
     const chatInput = document.getElementById("chatInput");
@@ -89,6 +92,7 @@
       if (event.key === "Enter") sendChat();
     });
   }
+  /* //End: AI 채팅 */
 
   initDraftTools();
   initChat();

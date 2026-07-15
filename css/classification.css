@@ -1,12 +1,15 @@
 @charset "utf-8";
 
+/* Start: 국회질의분류 페이지 레이아웃 */
 .workspace {
   grid-template-columns: 370px minmax(650px, 1fr) 528px;
   padding: 8px;
   gap: 6px;
 }
 
-/* Upload panel */
+/* //End: 국회질의분류 페이지 레이아웃 */
+
+/* Start: 문서 업로드 패널 */
 .left-body {
   padding: 16px 14px;
   overflow: auto;
@@ -197,7 +200,9 @@
   border-radius: 10px;
 }
 
-/* Classification center */
+/* //End: 문서 업로드 패널 */
+
+/* Start: 질의 추출 결과 패널 */
 .center-head-tools {
   display: flex;
   align-items: center;
@@ -288,7 +293,9 @@
   color: var(--text);
 }
 
-/* Classification result */
+/* //End: 질의 추출 결과 패널 */
+
+/* Start: 질의 목록 및 추천실국 패널 */
 .right-body {
   display: flex;
   flex: 1;
@@ -387,6 +394,9 @@
   color: #068455;
 }
 
+/* //End: 질의 목록 및 추천실국 패널 */
+
+/* Start: 화면 너비 대응 */
 @media (max-width: 1500px) {
   .workspace {
     grid-template-columns: 340px minmax(560px, 1fr) 430px;
@@ -396,3 +406,4 @@
     min-height: 116px;
   }
 }
+/* //End: 화면 너비 대응 */

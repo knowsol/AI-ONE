@@ -2,15 +2,8 @@
   "use strict";
 
   const { downloadText, formatFileSize } = common;
-  const FILE_TYPES = Object.freeze({
-    pdf: { className: "pdf", label: "PDF" },
-    hwp: { className: "hwp", label: "HWP" },
-    hwpx: { className: "hwp", label: "HWP" },
-    xls: { className: "xls", label: "XLS" },
-    xlsx: { className: "xls", label: "XLS" },
-    xlsm: { className: "xls", label: "XLS" },
-  });
 
+  /* Start: 질의 선택 */
   function initQuestionSelection() {
     const questionCards = document.querySelectorAll(".q-card");
     const questionLines = document.querySelectorAll(".question-line");
@@ -36,21 +29,19 @@
       });
     });
   }
+  /* //End: 질의 선택 */
 
-  function getFileType(filename) {
-    const extension = (filename.split(".").pop() || "").trim().toLowerCase();
-    const matchedType = FILE_TYPES[extension];
-
-    if (matchedType) return matchedType;
-
-    return {
-      className: "doc",
-      label: extension ? extension.slice(0, 3).toUpperCase() : "DOC",
-    };
+  /* Start: 파일 업로드 */
+  function extClass(name) {
+    const ext = (name.split(".").pop() || "").toLowerCase();
+    if (ext === "pdf") return ["pdf", "PDF"];
+    if (ext === "hwp" || ext === "hwpx") return ["hwp", "HWP"];
+    if (ext === "xlsx") return ["xls", "XLS"];
+    return ["hwp", ext ? ext.slice(0, 3).toUpperCase() : "DOC"];
   }
 
   function createFileCard(file) {
-    const fileType = getFileType(file.name);
+    const [type, label] = extClass(file.name);
     const card = document.createElement("li");
     const icon = document.createElement("span");
     const detail = document.createElement("div");
@@ -61,8 +52,8 @@
     card.className = "file-card";
     card.dataset.name = file.name;
 
-    icon.className = `file-icon ${fileType.className}`;
-    icon.textContent = fileType.label;
+    icon.className = `file-icon ${type}`;
+    icon.textContent = label;
     icon.setAttribute("aria-hidden", "true");
 
     detail.className = "file-info";
@@ -138,7 +129,9 @@
 
     refreshFileCount();
   }
+  /* //End: 파일 업로드 */
 
+  /* Start: 분류 결과 다운로드 */
   function initClassificationDownload() {
     document.getElementById("downloadBtn").addEventListener("click", () => {
       const rows = Array.from(document.querySelectorAll(".q-card")).map(
@@ -164,6 +157,7 @@
       downloadText(content, "국회질의분류_추천실국_결과.txt");
     });
   }
+  /* //End: 분류 결과 다운로드 */
 
   initQuestionSelection();
   initFileUpload();

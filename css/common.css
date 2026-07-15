@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+/* Start: 공통 설정 */
 :root {
   --bg: #f3f6f9;
   --panel: #ffffff;
@@ -62,7 +63,9 @@ button {
   background: var(--bg);
 }
 
-/* Left icon rail */
+/* //End: 공통 설정 */
+
+/* Start: 사이드바 */
 .rail {
   z-index: 5;
   display: flex;
@@ -160,7 +163,9 @@ button {
   stroke-width: 1.8;
 }
 
-/* Main layout */
+/* //End: 사이드바 */
+
+/* Start: 메인 레이아웃 및 상단 바 */
 .main {
   display: flex;
   flex: 1;
@@ -260,7 +265,9 @@ button {
   height: calc(100vh - var(--top));
 }
 
-/* Shared panel */
+/* //End: 메인 레이아웃 및 상단 바 */
+
+/* Start: 공통 패널 */
 .panel {
   display: flex;
   flex-direction: column;
@@ -332,7 +339,41 @@ button {
   stroke-linejoin: round;
 }
 
-/* Scrollbar */
+/* Start: 다운로드 안내 토스트 */
+.toastify.download-toast {
+  display: flex;
+  align-items: center;
+  min-width: 240px;
+  max-width: calc(100vw - 30px);
+  padding: 14px 16px;
+  overflow: hidden;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: default;
+  background: var(--panel);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(26, 46, 71, 0.18);
+  gap: 16px;
+}
+
+.toastify.download-toast .toast-close {
+  flex: 0 0 auto;
+  padding: 0;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.75;
+}
+/* //End: 다운로드 안내 토스트 */
+
+/* //End: 공통 패널 */
+
+/* Start: 스크롤바 */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -354,3 +395,4 @@ button {
   background-clip: padding-box;
   border: 2px solid transparent;
 }
+/* //End: 스크롤바 */
