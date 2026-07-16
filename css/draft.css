@@ -199,10 +199,12 @@
 .draft-foot-left {
   display: flex;
   gap: 23px;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .draft-foot b {
-  color: var(--text);
+  color: var(--primary);
 }
 
 .zoom-tools {
