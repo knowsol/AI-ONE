@@ -2,9 +2,9 @@
 
 /* Start: 답변서 초안 페이지 레이아웃 */
 .draft-workspace {
-  grid-template-columns: minmax(780px, 1fr) 528px;
-  padding: 8px;
-  gap: 6px;
+  grid-template-columns: minmax(897px, 1fr) 607px;
+  padding: 9px;
+  gap: 7px;
 }
 
 /* //End: 답변서 초안 페이지 레이아웃 */
@@ -12,40 +12,20 @@
 /* Start: 답변서 초안 패널 */
 .draft-panel-head {
   justify-content: flex-start;
-  min-height: 66px;
-  height: 66px;
-  gap: 20px;
-}
-
-.generate-btn {
-  position: absolute;
-  left: 50%;
-  height: 34px;
-  padding: 0 18px;
-  color: var(--panel);
-  font-size: 13px;
-  font-weight: 900;
-  cursor: pointer;
-  background: var(--blue);
-  border: 0;
-  border-radius: 9px;
-  box-shadow: 0 0 0 4px #e6f2ff, 0 2px 5px rgba(11, 116, 220, 0.28);
-  transform: translateX(-50%);
-}
-
-.generate-btn:hover {
-  background: #0867c9;
+  min-height: 60px;
+  height: 60px;
+  gap: 23px;
 }
 
 .draft-section-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 38px;
-  height: 38px;
-  padding: 0 14px 0 18px;
+  min-height: 44px;
+  height: 44px;
+  padding: 0 16px 0 21px;
   color: var(--text);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
@@ -56,40 +36,70 @@
   align-items: center;
 }
 
+/* 캔버스: 문서가 올라가는 바탕 */
 .draft-scroll {
   flex: 1;
   min-height: 0;
-  padding: 34px 56px 28px;
+  padding: 40px 48px 56px;
   overflow: auto;
-  background: #f4f7fa;
+  background: #e7ebf1;
 }
 
-.draft-paper {
-  max-width: 1240px;
-  margin: 0 auto 34px;
+/* 페이지 스택: 줌·다운로드 대상 컨테이너(투명) */
+.draft-pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
   color: #071526;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.82;
   letter-spacing: -0.02em;
-  background: transparent;
+}
+
+/* 문서 시트 1장 = 페이지 단위 (A4 비율). 페이지네이션은 이 단위로 처리 */
+.draft-page {
+  position: relative;
+  width: min(760px, 100%);
+  min-height: 1074px;
+  padding: 60px 64px 72px;
+  background: var(--panel);
+  border: 1px solid #dbe1e9;
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgba(26, 46, 71, 0.13);
+}
+
+/* AI 생성 본문(HTML 조각)이 주입되는 영역 */
+.draft-page-body {
+  min-height: 100%;
+}
+
+/* 페이지 번호 */
+.draft-page-num {
+  position: absolute;
+  right: 64px;
+  bottom: 26px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .draft-question-box {
   display: grid;
-  grid-template-columns: 58px 1fr;
+  grid-template-columns: 67px 1fr;
   align-items: center;
-  height: 82px;
-  margin-bottom: 26px;
-  padding: 0 24px;
-  background: var(--panel);
+  height: 94px;
+  margin-bottom: 30px;
+  padding: 0 28px;
+  background: #f5f7fb;
   border: 1px solid #c8d6e3;
-  border-radius: 9px;
+  border-radius: 4px;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
 }
 
 .draft-question-no {
   color: var(--text);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 900;
   text-align: center;
 }
@@ -97,30 +107,30 @@
 .draft-question-text {
   margin: 0;
   color: var(--text);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 900;
   line-height: 1.55;
 }
 
 .draft-summary-box {
-  margin-bottom: 24px;
-  padding: 16px 20px;
+  margin-bottom: 28px;
+  padding: 18px 23px;
   color: #152234;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
-  background: var(--panel);
+  background: #f5f7fb;
   border: 1px solid #cbd8e3;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .draft-block {
-  margin: 24px 0 28px;
+  margin: 28px 0 32px;
 }
 
 .draft-heading {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: #071526;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 900;
 }
 
@@ -131,25 +141,25 @@
 }
 
 .draft-sub {
-  margin: 0 0 14px;
-  padding-left: 18px;
+  margin: 0 0 16px;
+  padding-left: 21px;
 }
 
 .draft-sub li {
-  margin: 8px 0;
+  margin: 9px 0;
 }
 
 .draft-table {
   width: 100%;
-  margin: 16px 0 18px;
-  font-size: 13px;
+  margin: 18px 0 21px;
+  font-size: 15px;
   background: var(--panel);
   border: 1px solid #cbd8e3;
   border-collapse: collapse;
 }
 
 .draft-table th {
-  height: 42px;
+  height: 48px;
   color: var(--text);
   font-weight: 900;
   text-align: center;
@@ -158,14 +168,14 @@
 }
 
 .draft-table td {
-  padding: 11px 14px;
+  padding: 13px 16px;
   line-height: 1.62;
   vertical-align: top;
   border: 1px solid #cbd8e3;
 }
 
 .draft-table td:first-child {
-  width: 110px;
+  width: 126px;
   color: #1f2937;
   font-weight: 700;
   text-align: left;
@@ -176,11 +186,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 48px;
-  height: 48px;
-  padding: 0 14px;
+  min-height: 70px;
+  height: 70px;
+  padding: 0 16px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   background: var(--panel);
   border-top: 1px solid var(--line);
@@ -188,7 +198,7 @@
 
 .draft-foot-left {
   display: flex;
-  gap: 20px;
+  gap: 23px;
 }
 
 .draft-foot b {
@@ -199,31 +209,31 @@
   display: flex;
   align-items: center;
   color: var(--text);
-  gap: 8px;
+  gap: 9px;
 }
 
 .zoom-btn {
   display: grid;
   place-items: center;
-  width: 27px;
-  height: 27px;
+  width: 31px;
+  height: 31px;
   color: #6b7886;
   font-weight: 900;
   cursor: pointer;
   background: var(--panel);
   border: 1px solid #cbd8e3;
-  border-radius: 7px;
+  border-radius: 4px;
 }
 
 .zoom-btn:hover {
-  color: var(--blue);
+  color: var(--primary);
   background: #f3f7fb;
 }
 
 .zoom-percent {
-  min-width: 46px;
+  min-width: 53px;
   color: var(--text);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 900;
   text-align: center;
 }
@@ -232,15 +242,15 @@
 
 /* Start: AI 채팅 패널 */
 .chat-panel .panel-head {
-  min-height: 52px;
-  height: 52px;
-  padding: 0 16px;
+  min-height: 60px;
+  height: 60px;
+  padding: 0 18px;
 }
 
 .chat-title {
   margin: 0;
   color: var(--text);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 900;
 }
 
@@ -248,15 +258,15 @@
   display: flex;
   align-items: center;
   color: #8b98a6;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
-  gap: 22px;
+  gap: 25px;
 }
 
 .chat-action {
-  padding: 4px 0;
+  padding: 5px 0;
   color: #8b98a6;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   cursor: pointer;
   background: transparent;
@@ -264,7 +274,7 @@
 }
 
 .chat-action:hover {
-  color: var(--blue);
+  color: var(--primary);
 }
 
 .chat-body {
@@ -273,23 +283,23 @@
   flex-direction: column;
   min-height: 0;
   margin: 0;
-  padding: 16px 16px 14px;
+  padding: 18px 18px 16px;
   overflow: auto;
   list-style: none;
   background: var(--panel);
-  gap: 12px;
+  gap: 24px;
 }
 
 .msg {
   position: relative;
   max-width: 86%;
-  padding: 15px 16px 12px;
+  padding: 17px 18px 14px;
   color: #1f2937;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.65;
   letter-spacing: -0.02em;
   white-space: pre-line;
-  border-radius: 9px;
+  border-radius: 4px;
 }
 
 .msg.ai {
@@ -301,20 +311,33 @@
 .msg.user {
   align-self: flex-end;
   color: var(--panel);
-  font-weight: 800;
-  background: var(--blue);
+  background: var(--primary);
 }
 
 .msg-time {
+  position: absolute;
+  top: calc(100% + 2px);
   display: block;
-  margin-top: 8px;
   color: #7d8b98;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+/* 개별 메시지에 마우스 오버 시 그 메시지 시간만 노출 */
+.msg:hover .msg-time {
+  opacity: 1;
+}
+
+.msg.ai .msg-time {
+  left: 2px;
 }
 
 .msg.user .msg-time {
-  color: #cde3ff;
+  right: 2px;
+  color: #7d8b98;
 }
 
 .check {
@@ -332,8 +355,63 @@
   font-weight: 900;
 }
 
+/* AI 응답 로딩(타이핑) 인디케이터 */
+.msg-loading {
+  padding: 15px 18px;
+}
+
+.typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.typing span {
+  width: 7px;
+  height: 7px;
+  background: #97a6b3;
+  border-radius: 50%;
+  animation: typing-bounce 1s infinite ease-in-out;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typing-bounce {
+  0%,
+  60%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+/* AI 타이핑: 고스트(전체 문장, 투명)로 최종 폭 고정 + live 오버레이로 출력 */
+.type-wrap {
+  position: relative;
+  display: block;
+}
+
+.type-ghost {
+  visibility: hidden;
+}
+
+.type-live {
+  position: absolute;
+  inset: 0;
+}
+
 .chat-composer {
-  padding: 10px 12px 11px;
+  padding: 12px 14px 13px;
   background: var(--panel);
   border-top: 1px solid var(--line);
 }
@@ -341,71 +419,71 @@
 .prompt-chips {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 8px;
-  gap: 6px;
+  margin-bottom: 9px;
+  gap: 7px;
 }
 
 .prompt-chip {
-  height: 28px;
-  padding: 0 12px;
+  height: 32px;
+  padding: 0 14px;
   color: #7b8794;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   cursor: pointer;
   background: var(--panel);
   border: 1px solid #cbd8e3;
-  border-radius: 999px;
+  border-radius: 4px;
 }
 
 .prompt-chip:hover {
-  color: var(--blue);
+  color: var(--primary);
   background: #f3f8ff;
   border-color: #b8d3f1;
 }
 
 .input-row {
   display: grid;
-  grid-template-columns: 1fr 38px;
+  grid-template-columns: 1fr 44px;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 }
 
 .chat-input {
-  height: 38px;
-  padding: 0 12px;
+  height: 44px;
+  padding: 0 14px;
   color: #1f2937;
-  font-size: 13px;
+  font-size: 15px;
   outline: none;
   background: #f8fafc;
   border: 1px solid #cbd8e3;
-  border-radius: 9px;
+  border-radius: 4px;
 }
 
 .chat-input:focus {
   background: var(--panel);
   border-color: #8dbdea;
-  box-shadow: 0 0 0 3px rgba(11, 116, 220, 0.09);
+  box-shadow: 0 0 0 3px rgba(22, 58, 95, 0.09);
 }
 
 .send-btn {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   color: var(--panel);
   cursor: pointer;
-  background: var(--blue);
+  background: var(--primary);
   border: 0;
   border-radius: var(--radius);
 }
 
 .send-btn:hover {
-  background: #0867c9;
+  background: var(--primary-deep);
 }
 
 .send-btn svg {
-  width: 19px;
-  height: 19px;
+  width: 22px;
+  height: 22px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -416,13 +494,13 @@
 /* //End: AI 채팅 패널 */
 
 /* Start: 화면 너비 대응 */
-@media (max-width: 1500px) {
+@media (max-width: 1725px) {
   .draft-workspace {
-    grid-template-columns: minmax(680px, 1fr) 430px;
+    grid-template-columns: minmax(782px, 1fr) 494px;
   }
 
   .draft-scroll {
-    padding: 28px 34px;
+    padding: 32px 39px;
   }
 }
 /* //End: 화면 너비 대응 */

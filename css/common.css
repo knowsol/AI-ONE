@@ -9,16 +9,19 @@
   --text: #111827;
   --muted: #6d7d8d;
   --soft: #f7fafc;
+  --primary: #163A5F;
+  --primary-deep: #0f2942;
+  --primary-soft: #e9eef5;
+  --accent: #D92D2D;
   --blue: #0b74dc;
   --blue-soft: #eaf4ff;
-  --blue-deep: #075fc0;
   --green: #159166;
   --purple: #7d5be5;
   --red: #e53935;
-  --shadow: 0 10px 28px rgba(26, 46, 71, 0.05);
-  --radius: 12px;
-  --rail: 56px;
-  --top: 58px;
+  --shadow: 0 12px 32px rgba(26, 46, 71, 0.05);
+  --radius: 4px;
+  --rail: 64px;
+  --top: 67px;
 }
 
 * {
@@ -32,6 +35,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family:
+    "Pretendard Variable",
     Pretendard,
     -apple-system,
     BlinkMacSystemFont,
@@ -43,7 +47,9 @@ body {
 }
 
 body {
-  overflow: hidden;
+  /* 창이 콘텐츠(.app 최소폭)보다 좁으면 하단 가로 스크롤로 잘린 부분 접근 */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 button,
@@ -80,16 +86,17 @@ button {
 .logo {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  margin: 13px 0 22px;
-  color: #0691ca;
-  border-radius: 10px;
+  width: 39px;
+  height: 39px;
+  margin: 15px 0 25px;
+  background: var(--primary);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.logo svg {
-  width: 31px;
-  height: 31px;
+.logo img {
+  width: 28px;
+  height: 28px;
 }
 
 .rail-nav {
@@ -97,36 +104,50 @@ button {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 8px;
+  gap: 12px;
 }
 
 .nav-btn {
   position: relative;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   color: #697683;
   text-decoration: none;
   cursor: pointer;
   background: transparent;
   border: 0;
-  border-radius: 7px;
+  border-radius: 4px;
 }
 
 .nav-btn.active {
-  color: #086bd6;
-  background: #eaf3ff;
+  color: var(--panel);
+  background: var(--primary);
 }
 
 .nav-btn:hover {
-  color: var(--blue);
-  background: #f1f6fb;
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+/* 활성(현재) 버튼 호버: 더 진한 포인트색 유지 */
+.nav-btn.active:hover {
+  color: var(--panel);
+  background: var(--primary-deep);
+}
+
+/* 미사용 버튼 비활성화 */
+.nav-btn:disabled,
+.round-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
 }
 
 .nav-btn svg {
-  width: 21px;
-  height: 21px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -139,25 +160,25 @@ button {
   flex-direction: column;
   align-items: center;
   margin-top: auto;
-  padding-bottom: 14px;
-  gap: 8px;
+  padding-bottom: 16px;
+  gap: 9px;
 }
 
 .round-btn {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 39px;
+  height: 39px;
   color: #74818d;
   cursor: pointer;
   background: var(--soft);
   border: 1px solid var(--line);
-  border-radius: 50%;
+  border-radius: 4px;
 }
 
 .round-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 21px;
+  height: 21px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -180,10 +201,10 @@ button {
   align-items: center;
   justify-content: space-between;
   height: var(--top);
-  padding: 0 20px;
+  padding: 0 23px;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
-  gap: 18px;
+  gap: 21px;
 }
 
 .title-wrap {
@@ -192,19 +213,19 @@ button {
   flex: 0 0 auto;
   align-items: center;
   min-width: 0;
-  gap: 10px;
+  gap: 12px;
 }
 
 .title-row {
   display: flex;
   align-items: center;
   min-width: 0;
-  gap: 10px;
+  gap: 12px;
 }
 
 .title {
   color: var(--text);
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 800;
   letter-spacing: -0.02em;
   white-space: nowrap;
@@ -213,7 +234,7 @@ button {
 .subtitle {
   z-index: 2;
   color: #8b98a6;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
@@ -222,17 +243,34 @@ button {
 .beta-badge {
   display: inline-flex;
   align-items: center;
-  height: 24px;
-  padding: 0 12px;
+  height: 20px;
+  padding: 0 10px;
   color: var(--panel);
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.04em;
   white-space: nowrap;
-  background: linear-gradient(135deg, #2563eb, #4f46e5);
-  border-radius: 999px;
-  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.26);
-  gap: 6px;
+  background: var(--accent);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(217, 45, 45, 0.26);
+  animation: beta-blink 1.8s ease-in-out infinite;
+}
+
+/* BETA 뱃지 부드러운 깜빡임 */
+@keyframes beta-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beta-badge {
+    animation: none;
+  }
 }
 
 .beta-notice {
@@ -243,19 +281,19 @@ button {
   align-items: center;
   justify-content: center;
   max-width: 48%;
-  height: 30px;
-  padding: 0 14px;
+  height: 35px;
+  padding: 0 16px;
   overflow: hidden;
   color: #526274;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: -0.02em;
   text-overflow: ellipsis;
   white-space: nowrap;
   background: #f8fbff;
   border: 1px solid #d7e6f7;
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(26, 46, 71, 0.04);
+  border-radius: 4px;
+  box-shadow: 0 2px 9px rgba(26, 46, 71, 0.04);
   transform: translate(-50%, -50%);
 }
 
@@ -284,9 +322,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 66px;
-  height: 66px;
-  padding: 0 18px;
+  min-height: 60px;
+  height: 60px;
+  padding: 0 21px;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
 }
@@ -296,15 +334,15 @@ button {
   align-items: center;
   margin: 0;
   color: var(--text);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.02em;
-  gap: 9px;
+  gap: 10px;
 }
 
 .panel-title svg {
-  width: 19px;
-  height: 19px;
+  width: 22px;
+  height: 22px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -315,23 +353,23 @@ button {
 .download-btn {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 39px;
+  height: 39px;
   color: #9aa7b2;
   cursor: pointer;
   background: transparent;
   border: 0;
-  border-radius: 7px;
+  border-radius: 4px;
 }
 
 .download-btn:hover {
-  color: var(--blue);
+  color: var(--primary);
   background: #eef4f9;
 }
 
 .download-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 21px;
+  height: 21px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -343,28 +381,38 @@ button {
 .toastify.download-toast {
   display: flex;
   align-items: center;
-  min-width: 240px;
-  max-width: calc(100vw - 30px);
-  padding: 14px 16px;
+  min-width: 276px;
+  max-width: calc(100vw - 35px);
+  padding: 16px 18px;
   overflow: hidden;
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 600;
+  color: #fff;
+  font-family:
+    "Pretendard Variable",
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Noto Sans KR",
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.4;
   cursor: default;
-  background: var(--panel);
+  background: color-mix(in srgb, var(--primary) 85%, transparent);
   border: 0;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(26, 46, 71, 0.18);
-  gap: 16px;
+  border-radius: 4px;
+  box-shadow: 0 9px 28px rgba(26, 46, 71, 0.18);
+  gap: 18px;
 }
 
 .toastify.download-toast .toast-close {
   flex: 0 0 auto;
   padding: 0;
   margin-left: auto;
-  color: var(--muted);
-  font-size: 14px;
+  color: #fff;
+  font-size: 16px;
   line-height: 1;
   cursor: pointer;
   opacity: 0.75;
@@ -375,8 +423,8 @@ button {
 
 /* Start: 스크롤바 */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -387,7 +435,7 @@ button {
   background: #d4dde6;
   background-clip: padding-box;
   border: 2px solid transparent;
-  border-radius: 999px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -396,3 +444,62 @@ button {
   border: 2px solid transparent;
 }
 /* //End: 스크롤바 */
+
+/* Start: 프라이머리 색상 선택 팝오버 */
+.color-popover {
+  position: fixed;
+  left: calc(var(--rail) + 8px);
+  bottom: 12px;
+  z-index: 50;
+  width: max-content;
+  padding: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 28px rgba(26, 46, 71, 0.18);
+}
+
+.color-popover[hidden] {
+  display: none;
+}
+
+.color-popover-title {
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 24px);
+  gap: 8px;
+}
+
+.color-swatch {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius);
+  transition: transform 0.12s;
+}
+
+.color-swatch:hover {
+  transform: translateY(-1px);
+}
+
+.color-swatch.active::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+}
+/* //End: 프라이머리 색상 선택 팝오버 */

@@ -5,6 +5,10 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>국회질의분류 AI</title>
+	<!-- Start: Pretendard 폰트 -->
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+	<!-- //End: Pretendard 폰트 -->
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/classification.css" />
 	<!-- Start: 토스트 알림 스타일 -->
@@ -21,17 +25,10 @@
 		<!-- Start: 사이드바 -->
 		<aside class="rail" aria-label="주요 메뉴">
 			<div class="logo" title="AI-ONE">
-				<svg viewBox="0 0 42 42" aria-hidden="true">
-					<path
-						d="M27.3 5.9c-6.7-1-12.1 2.2-12.4 7.5-.2 3.9 2.8 6 7.6 7.8 4.4 1.7 6.5 3 6.2 6-.3 3.3-3.5 5.4-8.2 4.7-4-.6-7.3-3-9.8-6.4"
-						fill="none" stroke="#057bb7" stroke-width="3.3" stroke-linecap="round" />
-					<path
-						d="M14.8 36.1c6.7 1 12.1-2.2 12.4-7.5.2-3.9-2.8-6-7.6-7.8-4.4-1.7-6.5-3-6.2-6 .3-3.3 3.5-5.4 8.2-4.7 4 .6 7.3 3 9.8 6.4"
-						fill="none" stroke="#46b4de" stroke-width="3.3" stroke-linecap="round" />
-				</svg>
+				<img src="../assets/logo-a.svg" alt="AI-ONE" />
 			</div>
 			<nav class="rail-nav">
-				<button class="nav-btn" title="홈">
+				<button class="nav-btn" title="홈" disabled>
 					<svg viewBox="0 0 24 24">
 						<path d="M3 11.5 12 4l9 7.5" />
 						<path d="M5.5 10.5V20h13v-9.5" />
@@ -52,14 +49,14 @@
 						<path d="m14.6 6.7 2.7 2.7" />
 					</svg>
 				</a>
-				<button class="nav-btn" title="분석 현황">
+				<button class="nav-btn" title="분석 현황" disabled>
 					<svg viewBox="0 0 24 24">
 						<path d="M4 19V5" />
 						<path d="M4 19h17" />
 						<path d="m7 15 3-5 4 4 3-7 3 5" />
 					</svg>
 				</button>
-				<button class="nav-btn" title="채팅">
+				<button class="nav-btn" title="채팅" disabled>
 					<svg viewBox="0 0 24 24">
 						<path
 							d="M5 6.5A3.5 3.5 0 0 1 8.5 3h7A3.5 3.5 0 0 1 19 6.5v5A3.5 3.5 0 0 1 15.5 15H10l-5 4v-4.7A3.5 3.5 0 0 1 3 11V6.5z" />
@@ -67,13 +64,13 @@
 				</button>
 			</nav>
 			<div class="rail-bottom">
-				<button class="round-btn" title="사용자">
+				<button class="round-btn" title="사용자" disabled>
 					<svg viewBox="0 0 24 24">
 						<path d="M12 12a3.7 3.7 0 1 0 0-7.4A3.7 3.7 0 0 0 12 12z" />
 						<path d="M5 20a7 7 0 0 1 14 0" />
 					</svg>
 				</button>
-				<button class="round-btn" title="설정">
+				<button class="round-btn" id="settingsBtn" title="설정">
 					<svg viewBox="0 0 24 24">
 						<path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4z" />
 						<path
@@ -89,7 +86,7 @@
 				<div class="title-wrap">
 					<div class="title-row">
 						<div class="title">국회질의분류 AI 워크스페이스</div>
-						<span class="beta-badge">🚀 BETA OPEN</span>
+						<span class="beta-badge">BETA OPEN</span>
 					</div>
 				</div>
 				<div class="beta-notice">AI 추천 결과는 참고용입니다. 최종 실국은 담당자가 검토 후 확정하시기 바랍니다.</div>
@@ -121,7 +118,7 @@
 						<div class="file-section">
 							<div class="section-row">
 								<div class="section-title">입수 문서 목록</div>
-								<div class="count-badge"><span id="fileCount">3</span>건</div>
+								<div class="count-badge"><span class="owner-muted">전체</span><b><span id="fileCount">3</span>건</b></div>
 							</div>
 							<ul class="file-list" id="fileList" aria-label="입수 문서 목록">
 								<!--
@@ -174,7 +171,7 @@
 							질의 추출결과
 						</h2>
 						<div class="center-head-tools">
-							<div class="total-chip">전체 <b>5</b></div>
+							<div class="total-chip"><span class="owner-muted">전체</span><b>5건</b></div>
 						</div>
 					</div>
 					<div class="tabbar">
@@ -234,8 +231,7 @@
 								aria-pressed="true">
 								<span class="q-pill">Q1</span>
 								<span class="q-text">2024년도 예산편성지침 중 인건비 산정기준 변경사항에 대한 구체적 안내 요청</span>
-								<span class="owner-chip">주관: 예산실</span>
-								<span class="similarity">유사도:<b>94%</b></span>
+								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>예산실</span><span class="similarity">유사도 <b>94%</b></span></span>
 							</button>
 						</li>
 						<li class="q-list-item">
@@ -243,8 +239,7 @@
 								aria-pressed="false">
 								<span class="q-pill">Q2</span>
 								<span class="q-text">지방자치단체 재정자립도 산정 시 세외수입 항목 포함 여부 및 관련 법령 해석</span>
-								<span class="owner-chip">주관: 재정정책국</span>
-								<span class="similarity">유사도:<b>82%</b></span>
+								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>재정정책국</span><span class="similarity">유사도 <b>82%</b></span></span>
 							</button>
 						</li>
 						<li class="q-list-item">
@@ -252,8 +247,7 @@
 								aria-pressed="false">
 								<span class="q-pill">Q3</span>
 								<span class="q-text">공공기관 경영평가 시 비계량지표 평가방법론 개선 관련 의견 조회</span>
-								<span class="owner-chip">주관: 공공정책국</span>
-								<span class="similarity">유사도:<b>91%</b></span>
+								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>공공정책국</span><span class="similarity">유사도 <b>91%</b></span></span>
 							</button>
 						</li>
 						<li class="q-list-item">
@@ -261,8 +255,7 @@
 								aria-pressed="false">
 								<span class="q-pill">Q4</span>
 								<span class="q-text">외국환거래법 개정에 따른 해외직접투자 신고절차 변경 안내 요청</span>
-								<span class="owner-chip">주관: 국제금융국</span>
-								<span class="similarity">유사도:<b>78%</b></span>
+								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>국제금융국</span><span class="similarity">유사도 <b>78%</b></span></span>
 							</button>
 						</li>
 						<li class="q-list-item">
@@ -270,8 +263,7 @@
 								aria-pressed="false">
 								<span class="q-pill">Q5</span>
 								<span class="q-text">최근 기상이변으로 인한 농작물 피해 현황 자료 요청의 건</span>
-								<span class="owner-chip">주관: 해당없음</span>
-								<span class="similarity">유사도:<b>96%</b></span>
+								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>해당없음</span><span class="similarity">유사도 <b>96%</b></span></span>
 							</button>
 						</li>
 					</ul>
