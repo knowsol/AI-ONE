@@ -86,17 +86,17 @@ button {
 .logo {
   display: grid;
   place-items: center;
-  width: 39px;
-  height: 39px;
+  width: 45px;
+  height: 45px;
   margin: 15px 0 25px;
   background: var(--primary);
-  border-radius: 8px;
+  border-radius: 15px;
   overflow: hidden;
 }
 
 .logo img {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .rail-nav {
