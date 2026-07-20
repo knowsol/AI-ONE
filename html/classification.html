@@ -4,16 +4,12 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>AI-ONE : 질의분류</title>
-	<!-- Start: Pretendard 폰트 -->
-	<link rel="stylesheet"
-		href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-	<!-- //End: Pretendard 폰트 -->
+	<title>AI-ONE : 홈</title>
+	<!-- Start: 토스트 알림 스타일 -->
+	<link rel="stylesheet" href="../assets/vendor/toastify/toastify.css" />
+	<!-- //End: 토스트 알림 스타일 -->
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/classification.css" />
-	<!-- Start: 토스트 알림 스타일 -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-	<!-- //End: 토스트 알림 스타일 -->
 
 </head>
 
@@ -96,7 +92,11 @@
 
 			<!-- Start: 국회질의분류 AI 워크스페이스 -->
 			<div class="page workspace">
-				<!-- Start: 왼쪽) 문서 업로드 패널 -->
+				<!--
+						  [문서/페이지 구조 안내 — 개발자용]
+						  · #dropzone           : 업로드 할 파일 드래그 or 선택 가능
+						  · .hidden-file                       : 업로드 기능 인풋
+						  · .file-section 			: 업로드 된 파일 영역 -->
 				<section class="panel" aria-labelledby="uploadPanelTitle">
 					<div class="panel-head">
 						<h2 class="panel-title" id="uploadPanelTitle">
@@ -118,10 +118,12 @@
 						<div class="file-section">
 							<div class="section-row">
 								<div class="section-title">입수 문서 목록</div>
-								<div class="count-badge"><span class="owner-muted">전체</span><b><span id="fileCount">3</span>건</b></div>
+								<div class="count-badge"><span class="owner-muted">전체</span><b><span
+											id="fileCount">3</span>건</b></div>
 							</div>
 							<ul class="file-list" id="fileList" aria-label="입수 문서 목록">
 								<!--
+								 [문서/페이지 구조 안내 — 개발자용]
 									[`file-icon` 안내]
 										업로드된 파일의 확장자에 따라 `.file-icon`에 `.pdf`, `.hwp`, `.xls` 클래스가 자동 적용되며, 그 외에는 `.hwp`를 사용한다.
 									[`file-card` 안내]
@@ -199,9 +201,9 @@
 				<!-- Start: 오른쪽) 질의 목록 및 추천실국 패널 -->
 				<!--
 					[`.q-pill` 소관 구분 색]
-					-  단일소관 / 파란색
-					-  복수소관 / 보라색
-					-  비소관 / 회색
+					-  기본(단일소관) / 파란색
+					-  multi 클래스 추가(복수소관) / 보라색
+					-  none 클래스 추가(비소관) / 회색
 				-->
 				<section class="panel" aria-labelledby="recommendPanelTitle">
 					<div class="panel-head">
@@ -231,7 +233,9 @@
 								aria-pressed="true">
 								<span class="q-pill">Q1</span>
 								<span class="q-text">2024년도 예산편성지침 중 인건비 산정기준 변경사항에 대한 구체적 안내 요청</span>
-								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>예산실</span><span class="similarity">유사도 <b>94%</b></span></span>
+								<span class="q-foot"><span class="owner-chip"><span
+											class="owner-muted">주관</span>예산실</span><span class="similarity">유사도
+										<b>94%</b></span></span>
 							</button>
 						</li>
 						<li class="q-list-item">
@@ -239,7 +243,9 @@
 								aria-pressed="false">
 								<span class="q-pill">Q2</span>
 								<span class="q-text">지방자치단체 재정자립도 산정 시 세외수입 항목 포함 여부 및 관련 법령 해석</span>
-								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>재정정책국</span><span class="similarity">유사도 <b>82%</b></span></span>
+								<span class="q-foot"><span class="owner-chip"><span
+											class="owner-muted">주관</span>재정정책국</span><span class="similarity">유사도
+										<b>82%</b></span></span>
 							</button>
 						</li>
 						<li class="q-list-item">
@@ -247,7 +253,9 @@
 								aria-pressed="false">
 								<span class="q-pill">Q3</span>
 								<span class="q-text">공공기관 경영평가 시 비계량지표 평가방법론 개선 관련 의견 조회</span>
-								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>공공정책국</span><span class="similarity">유사도 <b>91%</b></span></span>
+								<span class="q-foot"><span class="owner-chip"><span
+											class="owner-muted">주관</span>공공정책국</span><span class="similarity">유사도
+										<b>91%</b></span></span>
 							</button>
 						</li>
 						<li class="q-list-item">
@@ -255,7 +263,9 @@
 								aria-pressed="false">
 								<span class="q-pill">Q4</span>
 								<span class="q-text">외국환거래법 개정에 따른 해외직접투자 신고절차 변경 안내 요청</span>
-								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>국제금융국</span><span class="similarity">유사도 <b>78%</b></span></span>
+								<span class="q-foot"><span class="owner-chip"><span
+											class="owner-muted">주관</span>국제금융국</span><span class="similarity">유사도
+										<b>78%</b></span></span>
 							</button>
 						</li>
 						<li class="q-list-item">
@@ -263,7 +273,9 @@
 								aria-pressed="false">
 								<span class="q-pill">Q5</span>
 								<span class="q-text">최근 기상이변으로 인한 농작물 피해 현황 자료 요청의 건</span>
-								<span class="q-foot"><span class="owner-chip"><span class="owner-muted">주관</span>해당없음</span><span class="similarity">유사도 <b>96%</b></span></span>
+								<span class="q-foot"><span class="owner-chip"><span
+											class="owner-muted">주관</span>해당없음</span><span class="similarity">유사도
+										<b>96%</b></span></span>
 							</button>
 						</li>
 					</ul>
@@ -275,9 +287,9 @@
 		</main>
 	</div>
 
-	<!-- Start: 토스트 알림 기능 -->
-	<script src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-	<!-- //End: 토스트 알림 기능 -->
+	<!-- Start: 토스트 알림 스크립트 -->
+	<script src="../assets/vendor/toastify/toastify.js" defer></script>
+	<!-- //End: 토스트 알림 스크립트 -->
 	<script src="../js/common.js" defer></script>
 	<script src="../js/classification.js" defer></script>
 </body>
